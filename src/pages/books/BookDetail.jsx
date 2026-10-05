@@ -26,7 +26,8 @@ function BookDetail() {
             setBook(res.data.data);
         })
         .catch((err)=>{
-            alert(err);
+            console.log(err);
+            navigate('/books');
         })
     }, []);
 
@@ -59,7 +60,7 @@ function BookDetail() {
 
                             <img
                                 src={book.bookImage}
-                                alt={book.bookTittle}
+                                alt={book.bookTitle}
                                 style={{
                                     width: '100%',
                                     maxWidth: '350px',
@@ -76,7 +77,7 @@ function BookDetail() {
 
                             <h2 className="fw-bold">
 
-                                {book.bookTittle}
+                                {book.bookTitle}
 
                             </h2>
 

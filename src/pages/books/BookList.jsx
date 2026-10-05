@@ -23,19 +23,19 @@ function BookList() {
         navigate('/add/book')
     }
 
-    function handleDelete(id) {
-        alert(id);
-        axios({
-            url: apiUrl + '/delete/book/' + id,
-            method: 'delete'
-        }).then(() => {
-            alert('data has been deleted successfully')
-            setIsDelete(true);
-        })
-            .catch((err) => {
-                alert(err)
-            })
-    }
+   function handleDelete(id) {
+    axios({
+        url: apiUrl + '/delete/book/' + id,
+        method: 'delete'
+    }).then(() => {
+        alert('Book has been deleted successfully');
+        setIsDelete(true);
+        navigate('/books');
+    })
+    .catch((err) => {
+        alert(err);
+    });
+}
     function handleUpdate(id) {
         alert(id);
         navigate('/edit/book/' + id);
@@ -75,7 +75,7 @@ function BookList() {
                         <thead>
                             <tr>
                                 <th>BookImage</th>
-                                <th>Book Tittle</th>
+                                <th>Book Title</th>
                                 <th>Author Name</th>
                                 <th>Price</th>
                                 <th>ISBN NO</th>
@@ -89,12 +89,12 @@ function BookList() {
                                 books.map((book) =>
                                     <tr>
                                         <td><img src={book.bookImage} width='30px' hegiht='30px'></img></td>
-                                        <td>{book.bookTittle}</td>
+                                        <td>{book.bookTitle}</td>
                                         <td>{book.authorName}</td>
-                                        <td>{book.price}</td>
+                                        <td>{book.originalPrice}</td>
                                         <td>{book.isbnNo}</td>
                                         {/* <td>{book.nop}</td> */}
-                                        <td>{book.publication}</td>
+                                        <td>{book.publisher}</td>
                                         <td>                                        
                                             <div className="d-flex gap-2">
 

@@ -9,12 +9,13 @@ function BookPageForEdit() {
     let navigate = useNavigate()
     let id = params.id;
     let [book, setBook] = useState({
-        bookTitle: '',
-        authorName: '',
-        price: 0,
-        isbnNo: '',
-        nop: 0
-    })
+    bookTitle: '',
+    authorName: '',
+    originalPrice: '',
+    isbnNo: '',
+    nop: 0,
+    publisher: ''
+})
     useEffect(() => {
 
         axios({
@@ -67,15 +68,19 @@ function BookPageForEdit() {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Price</Form.Label>
-                            <Form.Control type="text" name="price" value={book.price} onChange={manageUpdate}></Form.Control>
+                            <Form.Control type="text" name="originalPrice" value={book.originalPrice} onChange={manageUpdate}></Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>ISBN No</Form.Label>
                             <Form.Control type="text" name="isbnNo" value={book.isbnNo} onChange={manageUpdate}></Form.Control>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>No Of Pages</Form.Label>
+                            <Form.Label>No Of Nop</Form.Label>
                             <Form.Control type="text" name="nop" value={book.nop} onChange={manageUpdate}></Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>No Of Publication</Form.Label>
+                            <Form.Control type="text" name="publisher" value={book.publisher} onChange={manageUpdate}></Form.Control>
                         </Form.Group>
                         <Button variant="danger" className='mt-3' onClick={editBook} >Edit Book</Button>
                     </Form>
